@@ -6,7 +6,8 @@ javascript typescript blockchain solidity hardhat reactjs nextjs linux
 - 5
 
 ```tsx
-
+debian@debian:~/projects/weekly56/blog1$ npx hardhat celo-account
+Address: 0x6CDA5ef035A581e37198AAf09005d98e2D8Ae857
 ```
 
 ----

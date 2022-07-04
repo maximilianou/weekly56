@@ -1,4 +1,8 @@
 import * as dotenv from "dotenv";
+import fs from 'fs';
+import path from 'path';
+//import Account from './celo_account';
+const Account = require('./celo_account');
 
 import { HardhatUserConfig, task } from "hardhat/config";
 import "@nomiclabs/hardhat-etherscan";
@@ -8,6 +12,12 @@ import "hardhat-gas-reporter";
 import "solidity-coverage";
 
 dotenv.config();
+
+const privateKeyFile = path.join( __dirname, './.secret');
+
+task(`celo-account`,`Print account address or create a new one`, async (taskArgs, hre) => {
+  fs.existsSync(privateKeyFile)? console.log(`Account Address: ${Account.getAccount().address}`): Account.setAccount();
+});
 
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
