@@ -16,7 +16,7 @@ contract TinyVillage is ERC1155 {
   }
   function mintMine() public {
     require( balanceOf(msg.sender, VILLAGE) > 0, "You need to have a Village");
-    require( balanceOf(msg.sender, MINE) == 0, "You already have a Mine" )
+    require( balanceOf(msg.sender, MINE) == 0, "You already have a Mine" );
     _mint(msg.sender, MINE, 1, "0x000");
   }
   function mintFarm() public {
@@ -27,7 +27,7 @@ contract TinyVillage is ERC1155 {
   function mintMill() public {
     require( balanceOf(msg.sender, VILLAGE) > 0, "You need to have a Village" );
     require( balanceOf(msg.sender, FARM) > 0, "You need to have a Farm");
-    require( balanceOf(msg.sender, MILL), "You already hava a Mill");
+    require( balanceOf(msg.sender, MILL) == 0, "You already hava a Mill");
     _mint(msg.sender, MILL, 1, "0x000");
   }
   function mintCastle() public {
