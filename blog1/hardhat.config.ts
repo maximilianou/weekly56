@@ -14,9 +14,16 @@ import "solidity-coverage";
 dotenv.config();
 
 const privateKeyFile = path.join( __dirname, './.secret');
+const Deploy = require("./celo_deploy")
 
 task(`celo-account`,`Print account address or create a new one`, async (taskArgs, hre) => {
   fs.existsSync(privateKeyFile)? console.log(`Account Address: ${Account.getAccount().address}`): Account.setAccount();
+});
+
+task(`celo-deploy`,`Deploy TinyVillage solidity ethereum in celo staging`, async (taskArgs, hre) => {
+  const tx = await Deploy.TinyVillage();
+  console.log(tx);
+  console.log(`Save the contract address: ${tx.contractAddress}`);
 });
 
 // This is a sample Hardhat task. To learn how to create your own go to
